@@ -71,7 +71,7 @@ namespace FunkySerialization
                 var fs =
                     File.Create(@"C:\temp\withoutprefix.pbuf"))
             {
-                Console.Out.WriteLine("Starting serializing prefix.");
+                Console.Out.WriteLine("Starting serializing without prefix.");
                 Console.Out.Flush();
                 stopwatch.Start();
                 Serializer.Serialize(fs,item);
@@ -79,6 +79,8 @@ namespace FunkySerialization
                 Console.Out.WriteLine("Done serializing without prefix. Time=" + stopwatch.ElapsedMilliseconds  + " ms");
                 Console.Out.Flush();
             }
+
+            var fileSizeWithout = new FileInfo(@"C:\temp\withoutprefix.pbuf").Length;
 
             using (
                 var fs =
@@ -94,6 +96,8 @@ namespace FunkySerialization
                 Console.Out.Flush();
             }
 
+            var fileSizeWith = new FileInfo(@"C:\temp\withprefix.pbuf").Length;
+            Assert.That(fileSizeWith, Is.EqualTo(fileSizeWithout).Within(80).Percent);
 
 
         }

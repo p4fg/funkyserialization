@@ -1,6 +1,6 @@
 Issue
 ======
-The object serialized in huge.pbuf can be serialized in about 6 seconds on my laptop using Serializer.Serialize().
+The object serialized in huge.pbuf can be deserialized and re-serialized in about 6 seconds on my laptop using Serializer.Serialize().
 Using Serializer.SerializeWithLengthPrefix() causes an apparent hang using 100% of one core.
 
 
